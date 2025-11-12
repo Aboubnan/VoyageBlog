@@ -40,8 +40,8 @@ def get_article_by_id(article_id):
 
 # --- Fonction d'Insertion pour le Formulaire (Étape 10) ---
 
-def insert_contact(nom, email, message):
-    """Insère un nouvel enregistrement de contact dans la table Contact."""
+def insert_contact_message(nom, email, message):
+    """Insère un message de contact complet (Nom, Email, Message)."""
     conn = get_db_connection()
     date_soumission = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     try:
@@ -51,8 +51,25 @@ def insert_contact(nom, email, message):
         )
         conn.commit()
         return True
-    except sqlite3.IntegrityError:
-        # Gère le cas où l'email est déjà présent (UNIQUE)
+    except sqlite3.Error: # Capture les erreurs SQL génériques
+        return False
+    finally:
+        conn.close()
+
+def insert_subscriber_email(email):
+    """Insère un email pour l'abonnement à la newsletter (doit être unique)."""
+    # NOTE : Si vous n'avez pas de table 'Abonnement', vous devez d'abord la créer
+    #        dans db_setup.py. Supposons qu'elle s'appelle 'Abonnement'.
+    conn = get_db_connection()
+    date_soumission = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    try:
+        conn.execute(
+            "INSERT INTO Abonnement (email, date_inscription) VALUES (?, ?)",
+            (email, date_soumission)
+        )
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError: # L'email existe déjà (contrainte UNIQUE)
         return False
     finally:
         conn.close()

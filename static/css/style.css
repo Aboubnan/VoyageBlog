@@ -12,8 +12,8 @@
 
 :root {
     /* Couleurs de la charte graphique basées sur la maquette */
-    --color-primary: #0077B6; /* Bleu Océan */
-    --color-secondary: #FFC300; /* Jaune Soleil / Accent */
+    --color-primary: #0077B6; /* Bleu Océan - Thème principal */
+    --color-secondary: #FFC300; /* Jaune Soleil / Accent - CTA/Boutons */
     --color-bg: #F8F9FA; /* Gris Très Clair pour l'arrière-plan */
     --color-text: #343A40; /* Gris Foncé pour la lisibilité */
     --color-light: #FFFFFF; /* Blanc */
@@ -34,12 +34,19 @@ body {
     margin: 0 auto;
     padding: 2rem 5%;
 }
+.page-section {
+    padding: 2rem 0;
+}
 
 h1, h2, h3 {
     font-family: var(--font-heading);
     color: var(--color-primary);
     margin-bottom: 1rem;
 }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
 
 /* --- Navigation & Header (Conforme Maquette) --- */
 .navbar {
@@ -47,16 +54,21 @@ h1, h2, h3 {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
-    background-color: var(--color-primary); /* Fond Bleu Océan */
+    background-color: var(--color-primary); 
     color: var(--color-light);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--color-light); /* Logo en blanc sur fond bleu */
+    color: var(--color-light);
     text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a {
@@ -64,13 +76,29 @@ h1, h2, h3 {
     text-decoration: none;
     color: var(--color-light);
     transition: color 0.3s;
+    padding: 0.5rem 0; /* Ajout d'un padding pour la zone de clic */
 }
 
 .nav-links a:hover {
-    color: var(--color-secondary); /* Effet Jaune à l'activation */
+    color: var(--color-secondary);
 }
 
-/* --- Banner / Hero Section (Conforme Maquette) --- */
+/* Bouton d'action dans la navigation (Abonnement - Jaune) */
+.cta-button-nav {
+    background-color: var(--color-secondary);
+    color: var(--color-text) !important; /* Rendre le texte sombre */
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px;
+    font-weight: 600;
+    margin-left: 2rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button-nav:hover {
+    background-color: #e5b300; /* Jaune légèrement plus foncé au survol */
+}
+
+/* --- Banner / Hero Section --- */
 .hero-banner {
     background-color: var(--color-primary);
     color: var(--color-light);
@@ -80,18 +108,12 @@ h1, h2, h3 {
 }
 .hero-banner h1 {
     color: var(--color-light);
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-.hero-banner p {
-    font-size: 1.2rem;
-    font-weight: 300;
+    font-size: 3rem;
 }
 
 /* --- Liste d'Articles (Grille) --- */
 .articles-container {
     display: grid;
-    /* Création d'une grille réactive (min 300px par colonne) */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
@@ -102,16 +124,24 @@ h1, h2, h3 {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    display: flex; /* Utilisation de flex pour ordonner image/texte */
+    display: flex;
     flex-direction: column;
+    transition: transform 0.3s;
+}
+.article-card:hover {
+    transform: translateY(-5px);
 }
 
 .article-card img {
     width: 100%;
-    height: 180px;
+    height: 200px;
     object-fit: cover;
     border-radius: 4px;
     margin-bottom: 1rem;
+}
+.article-card h3 a {
+    text-decoration: none;
+    color: var(--color-primary);
 }
 
 .article-meta {
@@ -119,7 +149,11 @@ h1, h2, h3 {
     color: #6c757d;
     margin-bottom: 0.5rem;
 }
+.article-resume {
+    margin-bottom: 1rem;
+}
 
+/* Bouton Lire la suite */
 .read-more, .cta-button {
     display: inline-block;
     background-color: var(--color-secondary);
@@ -127,11 +161,12 @@ h1, h2, h3 {
     padding: 0.7rem 1.5rem;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: auto; /* Pousse le bouton en bas de la carte */
+    margin-top: auto; 
     text-align: center;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-weight: 600;
 }
 
 .read-more:hover, .cta-button:hover {
@@ -140,10 +175,10 @@ h1, h2, h3 {
 
 /* --- Page Détail Article --- */
 .article-full {
-    max-width: 900px; /* Contenu plus serré pour la lecture */
+    max-width: 900px;
     margin: 2rem auto;
     background-color: var(--color-light);
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -151,33 +186,50 @@ h1, h2, h3 {
 .article-image-main {
     width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 450px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .article-meta-detail {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     font-style: italic;
-    color: #6c757d;
+    color: var(--color-primary);
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 10px;
 }
 
-/* --- Formulaire Contact --- */
+.article-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* --- Formulaires Contact & Abonnement (Réutilisable) --- */
 .contact-form-section {
     max-width: 600px;
-    margin: 2rem auto;
+    margin: 3rem auto;
     background-color: var(--color-light);
-    padding: 2rem;
+    padding: 3rem;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
 }
+.contact-form-section h1 {
+    margin-bottom: 0.5rem;
+}
+.contact-form-section p {
+    margin-bottom: 2rem;
+}
+
 
 .main-form label {
     display: block;
-    margin-top: 1rem;
+    text-align: left;
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: var(--color-text);
 }
 
 .main-form input[type="text"],
@@ -190,19 +242,45 @@ h1, h2, h3 {
     font-family: var(--font-body);
 }
 
+.main-form textarea {
+    resize: vertical;
+}
+
 .main-form .cta-button {
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     font-size: 1.1rem;
 }
 
+/* --- Messages Flash (Flask) --- */
+.flash-messages {
+    padding: 1rem 0;
+}
+
+.alert {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-align: center;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
 
 /* --- Footer --- */
 footer {
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem;
     background-color: var(--color-primary);
     color: var(--color-light);
-    margin-top: 4rem;
-    font-size: 0.8rem;
+    margin-top: 5rem;
+    font-size: 0.9rem;
 }

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Abonnement Newsletter{% endblock %}
+
+{% block content %}
+<section class="contact-form-section">
+    <h1>Abonnez-vous à notre Newsletter</h1>
+    <p>Ne manquez aucune de nos nouvelles destinations ! Recevez nos récits et conseils directement par email.</p>
+
+    <form method="POST" action="{{ url_for('subscribe') }}" class="main-form">
+        
+        <label for="email">Votre Email :</label>
+        <input type="email" id="email" name="email" required>
+        
+        <button type="submit" class="cta-button">Je m'abonne !</button>
+    </form>
+</section>
+{% endblock %}

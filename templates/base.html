@@ -12,13 +12,27 @@
             <a href="{{ url_for('home') }}" class="logo">Mon Blog de Voyage</a>
             <div class="nav-links">
                 <a href="{{ url_for('home') }}">Accueil</a>
-                <a href="{{ url_for('contact') }}">Contact & Abonnement</a> 
+                <a href="{{ url_for('about') }}">À Propos</a> 
+                <a href="{{ url_for('contact') }}">Contact</a> 
+                <a href="{{ url_for('subscribe') }}" class="cta-button-nav">S'abonner</a>
             </div>
         </nav>
     </header>
 
     <main>
-        {% block content %}{% endblock %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    {% block content %}{% endblock %}
     </main>
 
     <footer>
