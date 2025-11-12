@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Détail de l'Article{% endblock %}
+
+{% block content %}
+<article class="article-full">
+    <img src="{{ url_for('static', filename='images/placeholder_article_img.jpg') }}" alt="Image de l'article" class="article-image-main">
+    
+    <h1>{{ article.titre | default("Voyage au Bout du Monde : Île Paradis") }}</h1>
+    
+    <div class="article-meta-detail">
+        <p>Auteur: **{{ article.auteur | default("Alex V.") }}** | Publié le: **{{ article.date_pub | default("01/01/2025") }}** dans **{{ article.categorie_nom | default("Asie") }}**</p>
+    </div>
+    
+    <div class="article-content">
+        <p>Ceci est le **premier paragraphe** du contenu de l'article. Il est essentiel que le design Front-end (CSS) rende ce texte facile à lire, avec une bonne taille de police et un interligne agréable. C'est le cœur de la fonctionnalité **F2 : Afficher le détail de l’article**.</p>
+        
+        <p>Le corps de l'article peut contenir plusieurs paragraphes de contenu détaillé. À l'Axe 3, nous récupérerons ce texte directement depuis la colonne `contenu` de votre table SQL `Article`.</p>
+        
+        <h2>Sous-titre pour la section</h2>
+        <p>Il est important de tester le rendu des titres dans le contenu pour vérifier la hiérarchie visuelle. Nous utilisons la police Poppins pour les titres (H1, H2, H3).</p>
+        
+        <p>Pour l'instant, le contenu est statique, mais le style est prêt pour l'intégration des données !</p>
+    </div>
+</article>
+{% endblock %}

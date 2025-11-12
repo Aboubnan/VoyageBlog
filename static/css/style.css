@@ -1,0 +1,107 @@
+/* Import des polices (si nécessaire) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Lora:wght@400;700&display=swap');
+
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Vos couleurs de charte graphique */
+    --color-primary: #0077B6; /* Bleu Océan */
+    --color-secondary: #FFC300; /* Jaune Soleil */
+    --color-bg: #F8F9FA; /* Gris Très Clair */
+    --color-text: #343A40; /* Gris Foncé */
+}
+
+body {
+    font-family: 'Lora', serif; /* Police du corps de texte */
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+/* --- Navigation (Header) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: white; /* Fond clair pour le menu */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+/* --- Banner / Hero Section --- */
+.hero-banner {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Liste d'Articles (Page d'accueil) --- */
+.articles-list {
+    padding: 0 5%;
+}
+
+.articles-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.article-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-card h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.read-more {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: white;
+    margin-top: 4rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.8rem;
+}
