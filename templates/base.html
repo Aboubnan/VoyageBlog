@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Blog de Voyage{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    </head>
+</head>
 <body>
     <header>
         <nav class="navbar">
             <a href="{{ url_for('home') }}" class="logo">Mon Blog de Voyage</a>
             <div class="nav-links">
                 <a href="{{ url_for('home') }}">Accueil</a>
-                <a href="#">À Propos</a> 
                 <a href="{{ url_for('contact') }}">Contact & Abonnement</a> 
             </div>
         </nav>
@@ -23,7 +22,7 @@
     </main>
 
     <footer>
-        <p>&copy; {{ now().year }} Blog de Voyage. Tous droits réservés.</p>
-        </footer>
+        <p>&copy; 2025 Blog de Voyage. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>

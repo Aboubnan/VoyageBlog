@@ -1,29 +1,33 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Blog de Voyage{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    </head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="{{ url_for('home') }}" class="logo">Mon Blog de Voyage</a>
-            <div class="nav-links">
-                <a href="{{ url_for('home') }}">Accueil</a>
-                <a href="#">À Propos</a> 
-                <a href="{{ url_for('contact') }}">Contact & Abonnement</a> 
-            </div>
-        </nav>
-    </header>
+{% extends "base.html" %}
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+{% block title %}Accueil - Récits d'évasion{% endblock %}
 
-    <footer>
-        <p>&copy; {{ now().year }} Blog de Voyage. Tous droits réservés.</p>
-        </footer>
-</body>
-</html>
+{% block content %}
+<section class="hero-banner">
+    <h1>Explorez le Monde, Un Article à la Fois</h1>
+    <p>Découvrez nos dernières aventures et conseils de voyage.</p>
+</section>
+
+<section class="articles-list container">
+    <h2>Nos Derniers Voyages</h2>
+    
+    <div class="articles-container">
+        <article class="article-card">
+            <img src="{{ url_for('static', filename='images/placeholder_image_1.jpg') }}" alt="Lisbonne">
+            <h3>Lisbonne : Pastel de Nata et Fado</h3>
+            <p class="article-meta">Publié par Alex V. dans Europe</p>
+            <p class="article-resume">Aperçu du contenu de l'article sur Lisbonne. Conseils pour les quartiers historiques et les pâtisseries !</p>
+            <a href="#" class="read-more">Lire l'article complet</a>
+        </article>
+        
+        <article class="article-card">
+            <img src="{{ url_for('static', filename='images/placeholder_image_2.jpg') }}" alt="Kyoto">
+            <h3>Kyoto : Silence et Cerisiers en Fleurs</h3>
+            <p class="article-meta">Publié par Léa K. dans Asie</p>
+            <p class="article-resume">Un voyage spirituel à travers les jardins zen et les temples moins connus. Découvrez comment naviguer dans cette ville sublime.</p>
+            <a href="#" class="read-more">Lire l'article complet</a>
+        </article>
+        
+        </div>
+</section>
+{% endblock %}
