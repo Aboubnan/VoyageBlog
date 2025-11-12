@@ -13,12 +13,17 @@ def get_db_connection():
 # --- Fonctions CRUD (Read) ---
 
 def get_all_articles():
-    """Récupère tous les articles avec le nom de leur catégorie."""
     conn = get_db_connection()
     articles = conn.execute("""
         SELECT 
-            A.id, A.titre, SUBSTR(A.contenu, 1, 150) AS resume, 
-            A.auteur, A.date_pub, C.nom AS categorie_nom
+            A.id, 
+            A.titre, 
+            A.contenu, 
+            A.auteur, 
+            A.date_pub, 
+            A.categorie_id, 
+            A.image_url,  -- <--- CORRECTION : Suppression des astérisques (**)
+            C.nom AS categorie_nom
         FROM Article A
         JOIN Categorie C ON A.categorie_id = C.id
         ORDER BY A.date_pub DESC

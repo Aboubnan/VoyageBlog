@@ -4,7 +4,7 @@
 
 {% block content %}
 <article class="article-full">
-    <img src="{{ url_for('static', filename='images/placeholder_article_img.jpg') }}" alt="Image de l'article" class="article-image-main">
+    <img src="{{ article.image_url }}" alt="Image de couverture de l'article" class="article-image-main">
     
     <h1>{{ article.titre | default("Voyage au Bout du Monde : Île Paradis") }}</h1>
     

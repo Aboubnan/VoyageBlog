@@ -24,10 +24,10 @@ def setup_database():
             contenu TEXT NOT NULL,
             auteur TEXT NOT NULL,
             date_pub TEXT NOT NULL,
-            -- Liaison à la table Categorie
+            image_url TEXT,
             categorie_id INTEGER,
             FOREIGN KEY (categorie_id) REFERENCES Categorie(id)
-        );
+        )
     """)
 
     # --- 3. Table Contact (pour le Formulaire de Comptage/Abonnement) ---
