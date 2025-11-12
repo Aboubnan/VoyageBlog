@@ -1,0 +1,12 @@
+# Dossiers et fichiers d'environnement Python
+venv/
+__pycache__/
+
+# Fichiers compilés (souvent dans les environnements virtuels)
+*.pyc
+
+# Base de données SQLite (souvent ignorée pour éviter de versionner les données)
+database/*.db
+
+# Fichiers de configuration spécifiques (si vous en avez)
+*.env
